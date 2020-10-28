@@ -11,6 +11,8 @@ if __name__ == '__main__':
             if phrase in statement:
                 speak("What can I help you ?")
                 statement =get_audio().lower()
+                if 'ask' in statement:
+                    wolframalpha()
                 if 'wikipedia' in statement:
                     searchWiki(statement)
                 if 'open word' in statement:
@@ -35,5 +37,5 @@ if __name__ == '__main__':
                 for phrase in STOP:
                     if phrase in statement:
                         speak("Always glad to help")
-                        break
+                        exit
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

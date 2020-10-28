@@ -60,6 +60,7 @@ def note(text):
 
 def wolframalpha():
     client = wolframalpha.Client("6GHTW8-6QGK95X58R")
+    speak("What do you want to ask about ?")
     question = get_audio()
     res = client.query(question)
     speak(next(res.results).text)
@@ -88,6 +89,7 @@ def readNews():
     for number,result in enumerate(api_response['articles'],start=1):
         speak(f"""News number {number}:\nTitle: {result['title']}\nDescription: {result['description']}\nLink: {result['url']}
     """)
+
 def playMusic():
     speak('What song do you want to play ?')
     mysong = get_audio()
@@ -95,7 +97,7 @@ def playMusic():
         result = YoutubeSearch(mysong,max_results=10).to_dict()
         if result:
             break
-    url = 'https://www.youtube.com'+result[0]['channel_link']
+    url = 'https://www.youtube.com/watch?v='+result[0]['id']
     webbrowser.open(url)
     speak('Done')
 
